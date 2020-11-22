@@ -20,30 +20,30 @@ public class Ball {
 
     public Ball() {
         this.xC = 500;
-        this.yC = 300;
-        this.xSize = 15;
-        this.ySize = 15;
-        this.xVec = -optSpeed;
+        this.yC = 850;
+        this.xSize = 35;
+        this.ySize = 30;
+        this.xVec = -optSpeed;//value - because we want the ball to go upside
         this.yVec = optSpeed;
     }
 
 
     void init() {//initializes the balls variables
         this.left = xC;
-        this.right = xC + xSize;
+        this.right = xC + xSize;//for detect collision
         this.up = yC;
-        this.down = yC + ySize;
+        this.down = yC + ySize;//for detect collison
 
     }
 
 
     void xDelta() {//changes position in the x Axis
         xC += xVec;
-        if (xC < 0) {
+        if (xC < 0) {//boundary = 0
             xC = 0;
             reflectX();
-        } else if (xC > 1346) {
-            xC = 1346;
+        } else if (xC > 1900) {//boundary = 1900
+            xC = 1900;
             reflectX();
         }
     }
@@ -58,8 +58,8 @@ public class Ball {
         } else if ((xC > player.xPos) && (xC < player.xPos + player.xSize) && (yC == player.yPos - ySize)) {
             reflectY();
             return false;
-        } else if (yC > 760) {
-            yC = 760;
+        } else if (yC > 1050) {
+            yC = 1050;
             reflectY();
             return true;
         }
@@ -67,10 +67,10 @@ public class Ball {
     }
 
 
-    boolean Delta (Paddle player, boolean onPaddle) {
+    boolean Delta (Paddle player, boolean onPaddle) {//sabitleme
         if (onPaddle) {
             this.xC = player.xPos + (player.xSize / 2) - (this.xSize / 2);
-            this.yC = player.yPos - 20;
+            this.yC = player.yPos - 35;
             return false;
         } else {
             xDelta();

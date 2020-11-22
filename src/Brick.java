@@ -5,8 +5,8 @@ public class Brick{
     int xPos;
     int yPos;
     int health;
-    int sizeX = 40;
-    int sizeY = 20;
+    int sizeX = 60;
+    int sizeY = 25;
     int lower;
     int left;
     int right;
@@ -19,7 +19,7 @@ public class Brick{
         this.yPos = y;
         this.health = health;
         top = yPos;
-        lower = yPos+sizeY;
+        lower = yPos + sizeY;
         right =xPos;
         left = xPos + sizeX;
     }
@@ -37,7 +37,7 @@ public class Brick{
     }
 
 
-    boolean hit(){
+    boolean hit(){//when the method returns true , brick don't have health
         health--;
         if(health<= 0 ){
             health = 0 ;

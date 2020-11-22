@@ -17,10 +17,10 @@ public class Paddle {
     //constructor
     public Paddle(){
         xPos = 0 ;
-        yPos = 600 ;
+        yPos = 950 ;
         xSize = 250 ;
-        ySize = 10 ;
-        xLimRight = 1116 ;
+        ySize = 20 ;
+        xLimRight = 1650 ;
         xLimLeft = 0 ;
     }
 
@@ -32,18 +32,14 @@ public class Paddle {
 
     void xDelta(){//moves paddle in x Axis
         xPos += xVec;
-        if(xPos < 0 ){
-            xPos =  0 ;
+        if(xPos < xLimLeft ){//limit for left side
+            xPos =  xLimLeft ;
         }
-        if((xPos > 1116)){
-            xPos = 1116;
+        if((xPos > xLimRight)){//limit for right side
+            xPos = xLimRight;
         }
     }
-
-
-   /* void yDelta(){//moves paddle in y Axis
-
-    }*/
+    //paddle doesn't need to move in y Axis so we don't write method for moving in y Axis
 
 
 //    ===============
@@ -69,12 +65,6 @@ public class Paddle {
     }
 
 
-    void increaseYVec(){
-        if(yVec<maxSpeed){
-            yVec +=2;
-        }
-    }
-
 
     void decreaseXVec(){
         if(xVec>minSpeed){
@@ -83,11 +73,7 @@ public class Paddle {
     }
 
 
-    void decreaseYVec(){
-        if(yVec > minSpeed){
-            yVec--;
-        }
-    }
+
 
 
     void normalizeX(){
@@ -100,12 +86,6 @@ public class Paddle {
     }
 
 
-    void normalizeY(){
-        if(yVec<-2){
-            yVec-=10;
-        }else if(yVec > 2){
-//
-        }
-    }
+
 
 }
